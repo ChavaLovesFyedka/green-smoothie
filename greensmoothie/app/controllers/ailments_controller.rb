@@ -3,6 +3,8 @@ class AilmentsController < ApplicationController
 
   # GET /ailments
   # GET /ailments.json
+  #@ailments stores all of the ailments objects in db
+  #corresponding index view, will render all of those objects in the view
   def index
     @ailments = Ailment.all
   end
@@ -13,6 +15,7 @@ class AilmentsController < ApplicationController
   end
 
   # GET /ailments/new
+  #create a new object, persist data to ailment object, push to db, form on new page -- ailment object with name attribute, someone types that in and clicks submit, fires up a POST request, which persists data into db using Ailment.new function, then when you go to show page, try to find that specific object, will grab using object_id
   def new
     @ailment = Ailment.new
   end
@@ -72,3 +75,39 @@ class AilmentsController < ApplicationController
       params.require(:ailment).permit(:name)
     end
 end
+
+# class AilmentsController < ApplicationController
+
+#   def index
+#     if params[:search].nil?
+#       @ailments = []
+#     else
+#       quoted_search_terms = params[:search].split(",").collect do |recipe|
+#         "\"+#{recipe.strip}\""
+#       end.join(" ")
+
+#       @ailments = []
+#       begin
+#         @search = Ailment.search do
+#           fulltext quoted_search_terms do
+#             highlight :page_content
+#             minimum_match 1
+#           end
+#         end
+
+#         @ailments = @search.results
+#         @ailments << Ailment.first if @ailments.count == 0
+#       rescue
+#         @ailments = Ailment.all.sample(5)
+#       end
+#       @ailment_name = @ailments[0..4].collect(&:name).shuffle.first
+#       @ailment_url = Ailment.find_by(:name => @ailment_name).try(:url)
+
+#       respond_to do |format|
+#         format.html { render action: "index" }
+#         format.js
+#       end
+#     end
+#   end
+
+# end

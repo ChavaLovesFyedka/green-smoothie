@@ -1,27 +1,9 @@
-<h1>Listing ailments</h1>
+<% @ailments.each do |ailment| %>
+  <p><%= ailment.name %></p>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% if @ailments.any? %>
+  <%= collection_select :ailment_id, Ailment.find(:all),{:prompt => 'Please select an ailment'} %>
+<% end %>
 
-  <tbody>
-    <% @ailments.each do |ailment| %>
-      <tr>
-        <td><%= ailment.name %></td>
-        <td><%= link_to 'Show', ailment %></td>
-        <td><%= link_to 'Edit', edit_ailment_path(ailment) %></td>
-        <td><%= link_to 'Destroy', ailment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Ailment', new_ailment_path %>

@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20140322141857) do
     t.datetime "updated_at"
   end
 
+  add_index "ailment_recipes", ["ailment_id"], name: "index_disease_symptoms_on_ailment_id"
+  add_index "ailment_recipes", ["recipe_id"], name: "index_ailment_recipes_on_recipe_id"
+
   create_table "ailments", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

@@ -5,10 +5,11 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.png' %>
 </head>
 <body>
-
+<div id="background-image"></div>
 <%= yield %>
-
+<div id="copyright">© 2014 The Flatiron School. <a href="https://twitter.com/trickortechrat" target="blank">Trick or Techrat</a></span></div>
 </body>
 </html>

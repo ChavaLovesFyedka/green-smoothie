@@ -1,10 +1,28 @@
-<%= form_for(@ailment) do |f| %>
-  <% if @ailment.errors.any? %>
+<div class="close-out"><%= link_to "x", "#" %></div>
+  <div class="result-modal">
+  <p>
+    <h2 class="ailment-recipe">Here is your smoothie:</h2>
+    <h2><%= link_to @recipe_name.upcase, "http://www.wikipedia.org/#{@disease_url}", :target => "blank" %></h2>
+  </p>
+  <%= image_tag "skull-and-crossbones.png", :id => "skull-image" %>
+  <p class="disclaimer"><strong>Disclaimer:</strong><br>
+    This is a humor app. We are not real doctors, and you probably don't have this rare disease. But if you are really concerned, please see a real doctor.</p>
+  <h3 class="try-again-link"><%= link_to "Meh? Try again for a new recipe >>", "#" %></h3>
+  </div>
+
+
+
+
+
+
+
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ailment.errors.count, "error") %> prohibited this ailment from being saved:</h2>
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
       <ul>
-      <% @ailment.errors.full_messages.each do |msg| %>
+      <% @recipe.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -14,6 +32,10 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="actions">
     <%= f.submit %>
