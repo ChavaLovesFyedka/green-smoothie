@@ -18,12 +18,14 @@ require 'pry'
 
 class RecipeParser
 
-  Recipes_URL = "http://www.incrediblesmoothies.com/green-smoothie-recipes/"
+  # Recipes_URL = "http://www.incrediblesmoothies.com/green-smoothie-recipes/"
 
+  Recipes_URL = "http://trickortechrat.wordpress.com/2014/03/24/green-smoothie-ingredients/"
+  
   def self.scrape
     letter_array = ("a".."z").to_a
     letter_array.each do |letter|
-      page = Nokogiri::HTML(open("http://www.incrediblesmoothies.com/green-smoothie-recipes/"))
+      page = Nokogiri::HTML(open("http://trickortechrat.wordpress.com/2014/03/24/green-smoothie-ingredients/"))
       find_symptom_names(page)
     end
   end
