@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'simple_form'
 
+gem 'chosen-rails'
+
 group :development do
   gem "rails-erd"
 end

@@ -51,6 +51,6 @@ class Recipe < ActiveRecord::Base
   # def self.add_recipe(*recipes)
   #   recipes.each do |recipe|
   #     Recipe.find_or_create_by(:name => recipe.titleize, :active => true)
-    end
-  end
+    #end
+  #end
 end

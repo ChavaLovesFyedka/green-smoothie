@@ -1,0 +1,14 @@
+$(function() {
+  $(".search-form").hide();
+  $("#recipe-result").hide().html('<%= j render(:partial => "recipe_result") %>').fadeIn(900);
+  $(".try-again-link").click(function() {
+    $(".search-query").val("");
+    $(".search-form").fadeIn(500);
+    $("#recipe-result").hide();
+  });
+  $(".close-out").click(function() {
+    $(".search-query").val("");
+    $(".search-form").fadeIn(500);
+    $("#recipe-result").hide();
+  });
+});
